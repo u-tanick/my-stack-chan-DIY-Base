@@ -52,7 +52,7 @@ void setup() {
 
   M5.Speaker.setVolume(100);
 
-  // 顔ポジション設定
+  // 顔のサイズやポジション変更
   // 例：m5atomS3用
   // M5.Lcd.setRotation(0);
   // avatar.setScale(0.50);
@@ -70,10 +70,10 @@ void setup() {
 
   avatar.init(8);
 
-  // バッテリーアイコン
+  // バッテリーアイコンの表示／非表示
   avatar.setBatteryIcon(true);
 
-  // フォント
+  // フォントの指定
   avatar.setSpeechFont(&fonts::lgfxJapanGothicP_16);
 
 }
@@ -90,26 +90,26 @@ void loop() {
   M5.update();
 
   // ボタンA
-  // サウンド、テキスト、表情変更
+  // スピーカーを鳴らす、M5Stack-Avatarの表情変更、M5Stack-Avatarの台詞表示
   if (M5.BtnA.wasPressed()) {
       M5.Speaker.tone(1000, 200);
-      avatar.setSpeechText("御用でしょうか？");
       avatar.setExpression(Expression::Happy);
+      avatar.setSpeechText("御用でしょうか？");
   }
 
   // ボタンB
-  // 変数化したテキスト、変数をログに出力
+  // M5Stack-Avatarの台詞をテキスト変数で渡して表示、変数をログに出力
   if (M5.BtnB.wasPressed()) {
       M5.Speaker.tone(1500, 200);
+      avatar.setExpression(Expression::Neutral);
       char buff[100];
       sprintf(buff,"こんにちわ！");
       avatar.setSpeechText(buff);
       M5_LOGI("SpeechText: %c\n", buff);
-      avatar.setExpression(Expression::Neutral);
   }
 
   // ボタンC
-  // 顔変更
+  // M5Stack-Avatarの顔変更
   if (M5.BtnC.wasPressed()) {
       M5.Speaker.tone(2000, 200);
       cp = new ColorPalette();

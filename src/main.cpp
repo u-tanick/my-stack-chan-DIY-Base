@@ -10,7 +10,7 @@
 
 // CoreS3を使用する場合は#defineを有効化
 // #define ARDUINO_M5STACK_CORES3
-// #ifdef ARDUINO_M5STACK_CORES3
+#ifdef ARDUINO_M5STACK_CORES3
 #include <gob_unifiedButton.hpp>
 goblib::UnifiedButton unifiedButton;
 #endif
